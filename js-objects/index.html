@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All about objects</title>
+</head>
+<body>
+
+
+<script>
+	//this is the prototype of a school
+	function school(name, place, people, rating){
+		this.name = name;
+		this.place = place;
+		this.people = people;
+		this.rating = rating;
+	}
+
+	//skl1 is of type school and has all the propertiess that are defined in school
+	var skl1 = new school("donbosco", "delhi", "1K", 4);
+	for(var x in skl1){
+		console.log(skl1[x]);
+	}
+
+	//now school prototype has these two functions.
+	school.prototype = {
+		getNamePlace: function(){
+			console.log("name and place is " + this.name + " " + this.place); 
+		},
+		popularity: function(rate){
+			if(rate > 3){
+				console.log ("good school with rating " + rate);
+			}
+		}
+	};
+
+	var skl2 = new school("DPS", "hyd", "2k", 5);
+
+	//popularity of skl2
+	//to get this we don't have to write seperate functions
+	//all these can be attached to the prototype and can be used accordingly.
+	skl2.popularity(5);
+	skl2.getNamePlace();
+
+	//by the way this is constructor notaion of creating object
+	function human(name, place, race, veteran){
+		this.name = name;
+		this.place = place;
+		this.race = race;
+		this.veteran = veteran;
+		this.isVeteran = function(vet){
+			if(vet){
+				console.log("he is a veteran ")
+			}else{console.log("not a veteran")}
+		};
+	}
+
+	//now this person1 inherits all the properties and methods
+	//that are defined in human
+	var person1 = new human("killer", "West-Indie", "Africa", false);
+
+	human.prototype.getNameRace = function(){
+		console.log("name and race is " + this.name + " " +this.race);
+		//now person1 inherits "getNameRace" funciton from the prototype of human, from where it has been created.
+		//as this person1 is inheriting the method "getNameRace" from it's prototype, this is called prototypal inheritance.
+	}
+	person1.getNameRace();
+
+	var me = {
+		name: "mad",
+		hobby: "singing",
+		dislikes: ["dishonesty", "over-excitement"] 
+	};
+
+	Object.defineProperty(me, "study",{
+		value: "MS in EE",
+		writable: false,//this means this property value can be modified using assignment operator
+		enumerable: false,//this means this property will not be touched in for in loops or while loops etc,
+		configurable: true//this means this property can't be deleted and the property type can't be changed.
+	});
+
+	//checking writable
+	me.study = "MS in CS";
+	console.log("value of the defined property when writable is true " + me.study);//see this value now is changed to MS in CS, because writable is true.
+	//check to see whether it will be changed or not by setting the writable value to false
+
+	//checking enumerable
+	for(var x in me){
+		console.log("checking enumerable " + me[x]);
+		//see we have set enumerable to false, i.e that property will not be taken into consideration while enumeration, check to see by changing it to true
+	}
+
+	//checking configurable
+	var deleted = delete me.study;
+	console.log(deleted);//if the value is successfully deleted then deleted will return "true" else it will return "false" , look in the console, it will be false when configurable is false and vice-versa
+	//POINT TO NOTE, IF DESCRIPTORS ARE NOT DEFINED ALL THE VALUES WILL BE DEFAULT TO FALSE (not enumerable, not confiurable, not writable)
+
+	console.log("checking object.keys " + Object.keys(skl1));
+	//see this only returns own properties of skl1, it doesn't display getNamePlace and popularity which are in its prototype.
+
+	console.log("checking object.keys in me " + Object.keys(me));//here it should not display the non enumerable property "study" of "me" because it is set to false
+
+</script>
+</body>
+</html>

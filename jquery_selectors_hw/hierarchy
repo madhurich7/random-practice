@@ -1,0 +1,53 @@
+In jquery hierarchy selectors cateogary there are four selectors
+
+1. $('div > p')--this selects all the child 'p' elements inside of a div
+in only first level, i.e direct child elements in div, not the grand children 'p' elements
+
+2. $('div + p')--this selects the combined pair of 'div' and 'p' in the document, where ever the combination of two div and p are presents those two will be selected, if in between div and p there are some other elements they will not be selected	
+
+3. $('div p')--this selects all the p elements inside of a div (including grand children direct children everybody)	
+
+4. $('div ~ p')--this selects all the 'p' siblings of div, these two may or may not be together unlike the div + p selector	
+
+CONTENT FILTERS (* - indicates arrow one to one)
+
+1. $('div*:contains("blood")')--selects entire div* if the word "blood" is found inside of "div"  
+	$('div p*:contains("mad")')--selects the entire p* if the word mad is found inside of "p"
+
+2.$('div:empty')--selects empty divs in the entire document
+  $('div p:empty')--selects empty "p" elements, i.e it dont have child elements AND also no text, "text inside p is also considered as child element"
+
+  NOTE : EMPTY x PARENT -- :empty is opposite of :parent
+
+3.$('div p:parent')--selects the parent "p" elements i.e it LEAVES OUT the empty "p" elements inside of the div.
+
+ATTRIBUTE FILTERS
+1. $('div[class|="para"]')--selects all the divs with class, having "para" or starting with "para-" --line 54
+
+2.$('div[id*="para"]')--selects all the div having attribute as id and its value must contain the string "para" that's it, then it will select the entire div, contiang that value.
+
+3.$('div[id~="para"]')--selects all the divs that have id as an attribute and having the value "para" with spaces surrounding it, i.e it will not select id="para-123", id="para12", id="xyzpara". It will select id="para", id="para mad", id="first para".
+
+3.$('div[id$="para"]')--selects all the divs having the last characters as "para" of id, if id="paraxyz" --IT WILL NOT SELECT THIS
+id="mad para", id="xyzpara" --IT WILL SELECT THESE KIND OF DIVS
+
+4.$('div[id^="para"]')--selects he divs that have id, with starting characters as "para"
+
+5.$('div[class][id]')--selects allt eh divs that have both the attributes "id" and "calss".
+
+6.$('input[type="text"]')--selects exactly the same attribute with the exact value
+
+7.$('div[id!=para]')--selects those divs that don't have id and also id's that don't have the value para
+
+----
+Use double slash if the id contians special characters like id="m[0].entry[1]"
+then the selction will be $('#m\\[0\\]\\.entry\\[1\\]').
+Each special character is preceded by DOUBLE SLASHES.
+----
+$('.master div:eq(1)')--this selects for the "second div" inside of master element,
+$('.master div:eq(-1)')--this selects for the "first div" from last i.e this is equal to if we select eq(3) [if there are four elements inside of master, the third index is the fourth element and the "-1" index is the first element from last]
+
+:eq()--uses the array index, counting from beginning.
+:nth-child()--uses normal numbering from beginning
+:nth-child(1)--selects first element
+:eq(1)--selects the second element

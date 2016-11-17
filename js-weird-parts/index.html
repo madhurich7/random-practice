@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Delegation</title>
+	<style type="text/css">
+		p{
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="parent-div">
+		<p id="para-1">search <strong>para-1</strong> for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+</p>
+		<p id="para-2">search 2 <strong>para-2</strong> for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+</p>
+		<p id="para-3">search3 <strong>para-3</strong>for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+</p>
+		<p id="para-4">search for <strong>para-4</strong>'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+</p>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+	//using jquery
+		$(document).ready(function(){
+			$('.parent-div').click(function(e){
+				if(e.target && e.target.tagName == 'P'){
+					var id = e.target.id;
+					$(this).children('p#'+id).hide();
+					console.log(id);
+				}
+			});
+		});
+	</script>
+	<!-- <script>
+	//using javascript
+		var x = document.getElementsByClassName('parent-div')[0];
+		x.addEventListener('click', function(e) {
+			if(e.target && e.target.nodeName == 'P'){
+				var id = e.target.id;
+				console.log(id);
+			}
+	
+		});
+	</script> -->
+</body>
+</html>

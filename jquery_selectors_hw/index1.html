@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animate</title>
+	<style>
+		#mad{
+			width: 200px;
+			height: 200px;
+			background-color: #ff9900;
+		}
+	</style>
+</head>
+<body>
+	<div id="mad">
+		
+	</div>
+	<div>
+		hello
+	</div>
+	<hr>
+	<div class="master">
+		<div>Hi</div>
+		<div>how</div>
+		<div>are</div>
+		<div>you</div>
+	</div>
+
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+
+	// function madAnimate(){
+	// 	$('#mad').slideToggle('slow', madAnimate);
+	// }
+	// madAnimate();
+	$('#mad').click(function(){
+		$('div:animated').css('background-color', 'pink');
+	});
+
+	$('.master div:eq(-3)').css('background-color', '#669900');
+	$('.master div:nth-child(3)').css('background-color', '#996633');
+/*
+		$(document).ready(function(){
+		    function madAnimate(){
+			$('#mad').animate({
+				left: '200px',
+				width: '400px'
+			});
+			madAnimate();
+
+		}
+		madAnimate();
+	});*/
+		//this gave you an error called maximum call stack size exceeded.
+		//to avoid this you checked "http://stackoverflow.com/questions/6095530/maximum-call-stack-size-exceeded-error" but of no use
+
+	</script>
+
+
+</body>
+</html>

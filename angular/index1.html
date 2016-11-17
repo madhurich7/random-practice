@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chainin of controllers</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app="myApp">
+<div class="container" ng-controller="fruitsCtrl">
+	<div class="fruits" ng-repeat="x in fruits">
+		<h3>{{x}}</h3>
+	</div>
+</div>
+<div class="container" ng-controller="veggiesCtrl">
+	<div class="veggies" ng-repeat="x in veggies">
+		<h3>{{x}}</h3>
+	</div>
+</div>
+<div class="container" ng-controller="medicinesCtrl">
+	<div class="medicines" ng-repeat="x in medicines">
+		<h3>{{x}}</h3>
+	</div>
+</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script>
+	//here we are chaining the controllers with the module declared at the top
+	//and the entire statement will be eneded with only one semicolon
+	//only after declaring the last controller and inbetween there should be no semicolons
+	//because angular understands it as the end of script and stops looking into
+	//the statements declared after that.
+		angular.module("myApp", [])
+			.controller('fruitsCtrl', ['$scope', function($scope){
+				$scope.fruits = ["apple", "banana", "mango"];
+			}])
+			.controller('veggiesCtrl', ['$scope', function($scope){
+				$scope.veggies = ["beans", "sprouts", "carrots"];
+			}])
+			.controller('medicinesCtrl', ['$scope', function($scope){
+				$scope.medicines = ["homeo", "herbal", "ayurvedic"];
+			}]);
+			//this is the end and therefore ended with a semicolon
+	</script>
+</body>
+</html>

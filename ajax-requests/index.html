@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajax request</title>
+</head>
+<body>
+	Name:<br>
+	<input type="text"><br>
+	Age:<br>
+	<input type="number"><br>
+	<button id="add">Submit</button>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+			</tr>
+		</thead>
+		<tbody id="results">
+
+		</tbody>
+	</table>
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+
+		$(document).ready(function(){
+			
+			$.ajax({
+			url : 'http://rest.learncode.academy/api/johnbob/friends/',
+			method: 'GET',
+			success: function(data){
+				console.log(data);
+				
+				data.forEach(function(item){
+					//if the item is not empty, item is not array, item's type should not be an object, then only append the string
+					if(item != "" &&(!Array.isArray(item)) && (typeof(item)=='object'))
+						{
+							var str = "<tr>\
+								<td>" + item.name + "</td>\
+								<td>" + item.age + "</td>\
+								<td>" + item.id +"</td>\
+								<td><button id='"+item.id+"'>Delete</button></td>\
+							   </tr>"
+						};
+						$('#results').append(str);
+				});	
+				
+			},
+			error: function(xhr){
+				console.log("error in ajax call");
+			}
+		});
+
+			function getResults(){
+							$.ajax({
+				method: 'GET',
+				url: 'http://rest.learncode.academy/api/johnbob/friends/',
+				success: function(data){
+					alert('success get');
+				}
+			});
+			}
+
+		$('button#add').click(function(){
+			var name = $('input[type="text"]').val();
+			var age = $('input[type="number"]').val();
+			var data = {
+				name: name,
+				age: age
+			}
+
+			$.ajax({
+				method: 'POST',
+				url: 'http://rest.learncode.academy/api/johnbob/friends/',
+				data: data,
+				success: function(data){
+					alert('success');
+					getResults();
+				}
+			});
+
+			
+		});
+
+		$('#results').click(function(e){
+				if(e.target && e.target.tagName == 'BUTTON'){
+				/*var id = $(this).prev().text();*/
+				var id = e.target.id;
+				console.log(id);
+				$.ajax({
+				method: 'DELETE',
+				url: 'http://rest.learncode.academy/api/johnbob/friends/' + id,
+				success: function(data){
+					alert('data deleted successfully');
+					getResults();
+					
+				}
+			});
+			}
+		});
+
+		});
+					
+
+	</script>
+</body>
+</html>
+<!-- http://www.technofattie.com/2014/03/21/five-guidelines-for-avoiding-scope-soup-in-angular.html -->

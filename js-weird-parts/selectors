@@ -1,0 +1,39 @@
+getElementsByClassName
+	this selector selects the elements that have a specific class within its parentheses inside of quotes
+	and return an array.
+
+getElementsByTagName
+	this selector selects the matching tags that are specified inisde of the parentheses within quotes adn 
+	returns an array.
+
+document.getElementsByTagName('*')
+	this returns all the tag elements within the document (document can be replaced with any other object, it dont need to be a document, it may be within a div or within a specified class..etc)	
+
+document.querySelectorAll('.class1, .class2');
+	this returns all the tags that have class1 OR class2 as classes
+
+document.querySelectorAll('.class1 .class2');
+	if space is provided in between the classes, it searches for elements that have class2 within class1 element
+
+document.querySelector('.class1')
+	--if we want to specify only one selector then JUST query selector is used, that allows only one selector, that may be an id or class or what ever.
+
+	--if multiple ways of selections are required, then querySelectorAll is used (line 15 in this document)
+
+	But queryselctorAll leads to quirks mode, REFER "https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll"
+	--see if the base selector for this querySelctorAll
+
+	var base = document.querySelector('.base');
+	base.querySelectorAll('.class1 .class2')--contains the class2 element, even though the class1 element in outside of it, it displays the length of the class2 element(i.e no. of class2 elements)
+	--In order to avoid this we specify ":scope"
+
+	base.querySelectorAll(':scope .class1 .class2')---now this gives exact length of class2 elements found in class1 within base element. 
+
+	this is same as querySelectorAll('base .class1 .class2') 
+	here we don't write the statement for base as seen in line 26(var base = document.querySelector('.base');)
+
+	DOM PROPERTIES
+	see dom properties are the values that will be changed
+	Ex. document.getElementById is a method  and .innerHTML is the property to change inner text of an element.
+
+

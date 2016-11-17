@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Bubbling</title>
+	<style type="text/css">
+		div, p, ul, li {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div class="parent-div">
+	parent div
+		<p id="para-1">Para 1
+			<ul>
+				unordered list
+				<li><a href="index.html">list element (goes to para's)</a> </li>
+			</ul>
+		</p>
+		
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		$('div').click(function(){
+			alert('div clicked');
+		});
+		$('p').click(function(){
+			alert('para clicked');
+		});
+		$('ul').click(function(e){
+			/*e.preventDefault();*/
+			alert('ul clicked');
+			/*e.stopPropagation();*/
+		});
+		$('li').click(function(e){
+			alert('li clicked');
+			e.stopImmediatePropagation();
+		});
+		$('li').click(function(e){
+			alert('second time li clicked');
+			
+		});
+		$('li a').click(function(e){
+			e.preventDefault();
+			if(e.isDefaultPrevented()){
+				$('li a').append("default navigation is prevented here, it doesn't go to para's page here");
+			}
+			console.log(e.isDefaultPrevented());
+			
+		});
+
+	</script>
+</body>
+</html>

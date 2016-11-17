@@ -1,0 +1,13 @@
+>look into "https://www.youtube.com/watch?v=S6VMgPBD0eA"
+>look into "https://blogs.oracle.com/greimer/entry/best_way_to_code_a" to know which loop is faster and which is better to use in browsers.
+
+>If less lines of code is needed, then going to for loop is good, but if that doesn't matter either of them can be chosen.
+
+PROBLEM WITH WHILE LOOP IS IF WE FORGET TO MAKE THE CONDITION TO BE FALSE, THAT LEADS TO INFINITE LOOP
+>while writing loops with "while" check whether the condition is becoming false or not, else it may lead to infinite loop
+
+BUT IN FOR LOOP WE SHOULD MAKE A FALSE CONDITION WHERE THE LOOP ENDS.
+>This makes for loop in a sense better than while.
+look in index.html line 47 to check it out.
+
+SWITCH ALLOWS US TO CHOOSE FROM VARIOUS CONDITIONS POSSIBLE.

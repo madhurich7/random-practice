@@ -1,0 +1,9 @@
+Controllers can be declared externally and these controllers should be
+included in the script tag in the index.html file and also as a directive
+inside of the body to make it work in the Web page.
+
+Always use this order
+1.Vendors
+2.Modules
+3.Controllers
+4.Directives

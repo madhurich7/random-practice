@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IIFE</title>
+</head>
+<body>
+
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+	<button>4</button>
+	<button>5</button>
+	
+
+	<script>
+		var buttons = document.getElementsByTagName('button');
+		// for(var i = 0; i < buttons.length; i++){
+		// 	buttons[i].addEventListener('click', function(e){
+		// 		console.log('button ' + i + ' is clicked');//tjis statement will be executed only when the button is clicked, not when the event listener is added to it. By the time you click on the button the loop is finished and its already five, How do you think it will be 0,1,2,3,4,5.That is the reason it is printed as five, on what ever the button you click.
+
+		// 	});
+		// }
+
+		for(var i = 0; i < buttons.length; i++){
+			(function(j){
+				buttons[j].addEventListener('click', function(){
+					console.log('button ' + j + ' is clicked');
+				});
+		})(i)
+		}
+		//here for each step in the loop, the value of i is sustained, because, this "i" is passed to j, which is a parameter and we get as expected when we click on a button(0, 1, 2, 3, 4) because when we click, the value at that time is exactly where the loop is. This is self executing function
+
+		function mad(){
+			console.log("Im madhuri, call me mad");
+		}//see this function's console will not be printed untill unless we call the function mad() in the script.
+
+		mad();
+		//the same thing can be immediately called after declaring the function see below
+		(function mad(){
+			console.log("Im madhuri, call me mad");
+		})()
+
+		//the entire function decalration must be wrapped inside of the parens and tell the interpreter that its an expression not a decalration, else the interpreter will assume it as function decalration and throws an error.
+
+		//REFER "http://benalman.com/news/2010/11/immediately-invoked-function-expression/" for more information on IIFE's 
+
+	
+	</script>
+</body>
+</html>

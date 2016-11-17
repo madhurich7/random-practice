@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>REST</title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl1">
+		Name: <br>
+		<input type="text" ng-model="name"><br>
+		Age: <br>
+		<input type="number" ng-model="age"><br>
+		<button ng-click="addResult()">Submit</button>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Age</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in results track by $index">
+					<td>{{x.name}}</td>
+					<td>{{x.age}}</td>
+					<td>{{x.id}}</td>
+					<td><button ng-click="deleteResult(x.id)">Delete</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl1', ['$scope', '$http', function($scope, $http){
+				$http({
+				method: 'GET',
+				url: 'http://rest.learncode.academy/api/johnbob/friends/'
+			}).success(function(data){
+				$scope.results = data;
+			}).error(function(err){
+				return err;
+			});
+		
+				function getResults() {
+				$http({
+				method: 'GET',
+				url: 'http://rest.learncode.academy/api/johnbob/friends/'
+			}).success(function(data){
+				$scope.results = data;
+			}).error(function(err){
+				return err;
+			});
+		}
+
+			$scope.addResult = function(){
+				var data = {
+					name: $scope.name,
+					age: $scope.age
+				};
+
+				$http({
+					method: 'POST',
+					url: 'http://rest.learncode.academy/api/johnbob/friends/',
+					data: data
+				}).success(function(data){
+						alert('data added successfully');
+						getResults();
+				}).error(function(err){
+						return err;
+				});
+
+			};
+
+			$scope.deleteResult = function(id){
+				$http({
+					method: 'DELETE',
+					url: 'http://rest.learncode.academy/api/johnbob/friends/' + id
+				}).success(function(data){
+						alert('data deleted successfully');
+						getResults();
+				}).error(function(err){
+						return err;
+				});
+			}
+			
+		}]);
+
+
+	</script>
+
+</body>
+</html>

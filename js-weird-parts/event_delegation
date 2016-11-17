@@ -1,0 +1,42 @@
+Event Delegation
+REFER
+"https://davidwalsh.name/event-delegate"
+"https://www.sitepoint.com/javascript-event-delegation-is-easier-than-you-think/"
+"http://stackoverflow.com/questions/1687296/what-is-dom-event-delegation"
+"https://jsfiddle.net/d2zx2bjp/"
+
+EVENT DELEGATION
+>Event Delegation, is the process where for instance, if there are many child elements
+and each child element needs to have click event and some thing needs to happen when each of the child elemetn is clicked.
+>General thing what we do is we attach the event "click" to each and every child element and handle the event to be triggered. But if there is a situation like all the time many child elements should be added/removed dynamically, then we need to make sure that each child element has the required "click" handler, which is a very hectic process.
+>So inorder to avoid such situations. We just add a event handler to the parent element of all these child elements, so when ever a child element is clicked or whatever the event occured, THIS triggeres the event handler of the PARENT element, which is the same when we add the event handler to each child.
+
+EVENT BUBBLING
+>This process of trigerring the event handler of the parent, due to the child event is called as event bubbling, this event bubbles up to the DOM reaching the parent element.
+>The child element is called the target element of the event (from where the event has been originated) 
+
+LOOK INTO index1.html
+>Within parent div, we have a para, within para we have ul and li in ul.
+>when an event in li is triggered, this particular event triggers all it's parent events (all levels of parents in the hierarchy)
+>Though the event of parent is not occured, that parent's event will be triggered due to any of its child, events.
+
+EVENT PROPAGATION
+>event propagation is similar to event bubbling, the event propagates up to its parent element.
+>In order to stop the propagation upto it's parent element, we can stop it with,
+event.stopPropagation() function --look in line 33 in index1.html
+>where ever this statement is written, all the child element's events of this parent and the event of the parent itself will be triggered, and that's it, it will stop there and will not propagate still above this parent(where we have written the stop propagation function)
+
+STOP PROPAGATION IS DIFFERENT FROM STOP IMMEDIATE PROPAGATION
+>if same element has more than one event, if event.stopPropagation is specified for this element, then all other events of this element WILL BE EXECUTED but IT WILL STOP EXECUTING IT'S PARENT'S EVENTS. --look into line 38 in index1.html.
+>BUT in the place of event.stopPropagation, if event.stopImmediatePropagation is specified, then if there are any other events for the same element, those will NOT be executed also its parent's events WILL BE STOPPED from execution
+
+REFER - "http://stackoverflow.com/questions/5299740/jquery-stoppropagation-vs-stopimmediatepropagation"
+
+PREVENT DEFAULT BEHAVIOUR
+>Default behaviour of a page can be controlled using, e.preventDefault() method and there's also a method called e.isDefaultPrevented() to check whether the default behaviour is prevented or not, it returns true if e.preventDefault() method is used.
+
+Example default behaviours are 
+				-- Clicking on a hyperlink like an anchor tag
+				-- submitting a form and sending data to the server
+				all these will be prevented if prevent Default method is given.
+				(look into index1.html line 47)

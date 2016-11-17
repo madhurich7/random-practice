@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Selectors</title>
+	<style type="text/css">
+		.parent-div{
+			border: 1px solid black;
+		}
+		/* p{
+			border: 1px solid pink;
+		} */
+	</style>
+</head>
+<body>
+	<!-- element by class practice -->
+	<div class="parent-div">
+	parent-div
+		<p id="para-1">Para-1<br>
+			<span class="spl-text">spl-text</span><br>
+			<span class="spl-text">
+				spl-text
+				<p id="para-2">para-2</p>
+			</span>
+		</p>
+	</div>
+	<div class="parent-div">
+	parent-div<br>
+		<span class="spl-text">spl-text</span><br>
+		<span class="spl-text">spl-text</span><br>
+		<span class="spl-text">spl-text</span><br>
+	</div>
+	<div class="parent-div">
+	parent-div<br>
+		<span class="spl-text">spl-text</span><br>
+		<span class="spl-text">spl-text</span><br>
+		<span class="spl-text">spl-text</span><br>
+		<span class="spl-text">spl-text</span><br>
+	</div>
+	
+	<!-- elements by tag practice -->
+	
+
+
+
+	<script>
+		var parent = document.getElementsByClassName('parent-div');
+		var spans = document.getElementsByTagName('span');
+		var p = document.createElement('p');
+		p.appendChild(document.createTextNode('appended text in span'));
+
+
+
+		/*var para1 = document.querySelector('#para1');
+		var parentAndSpan = para1.querySelectorAll('.spl-text');console.log(parentAndSpan.length);*/
+
+		var all = document.getElementsByTagName("*");
+		all[3].style.border = '5px solid blue';
+		
+		//when two for loops are executed why this is not working
+		for(var i = 0; i < parent.length; i++){
+			for(var j = 0; j < spans.length; j++ ){
+			parent[i].spans[j].style.border = '1px solid red';
+		}
+		}
+		
+
+		for(var j = 0; j < spans.length; j++){
+			spans[j].style.color = 'blue';
+		}
+
+		/*parent[1].getElementsByClassName('spl-text')[0].style.border = '1px solid red';*/
+		/*console.log(parent);*/
+
+			/*var child = document.getElementsByClassName('spl-text');
+		for(var i = 0; i <= parent.length; i++){
+			for(var j = 0; j <= child.length; j++){
+				parent[i].child[j].style.border = '1px solid red';
+			}
+
+		}*/
+
+
+	</script>
+</body>
+</html>

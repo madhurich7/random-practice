@@ -1,0 +1,16 @@
+>Objects are useful in javascript, unlike other languages
+objects give us flexibility to access various functions just with one prototype.
+>look into code written in index.html
+
+PROPERTY SHADOWING
+>first in "o.b" if it directly find's "b" property in "o" itself, i.e where originally "o" is created, then eventhough
+if o.[[prototype]] has "b" property it will NOT be reflected or touched, because first it sees the immediate level before it, if it doesn't find it then it will access the property of its protoype--this is called PROPERTY SHADOWING.
+refer "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain"
+
+PROTOTYPAL INHERITANCE 
+>look into "https://www.sitepoint.com/simple-inheritance-javascript/" for reference
+>look into line 61 in index.html
+
+>Object.keys() ill loop through only enumerable own properties of an object
+>DIFFERENCE IS THAT for in loop, loops through the properties of the object's own properties and also it's prototype properties all of them that are in the prototype chain, BUT
+Object.keys() will only loop through it's own enumerable properties.

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bootstrap practice</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<!-- container occupies the width of the content inside it, i.e if the width of the content inside it is 50%
+then the container's width is 50% and it leaves equal spaces around the container (to the left and right), but container fluid always occupies entire width of the web page
+without bothering about the content's width inside it -->
+	<div class="container first-div">
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">content occupying four columns in large and medium desktops</div>
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">content occupying four columns</div>
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">content occupying four columns</div>
+		</div>
+	</div>
+	<div class="container-fluid second-div">
+		<div class="row first-row">
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">content occupying four columns in large and medium desktops</div>
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">content occupying four columns</div>
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">content occupying four columns</div>
+			<strong>This is first row in second container</strong>
+		</div>
+		<div class="row second-row">
+			<div class="col-lg-6">
+				<div class="row">
+					<div class="col-lg-3">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget posuere elit. Phasellus tempus ac leo id consectetur. Maecenas et tincidunt mauris. Curabitur tellus felis, aliquam vitae ultricies id, euismod in purus. Etiam lobortis quam nec interdum tempus. Etiam eu odio gravida, aliquam erat ac, finibus elit.
+					</div>
+					<div class="col-lg-3">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget posuere elit. Phasellus tempus ac leo id consectetur. Maecenas et tincidunt mauris. Curabitur tellus felis, aliquam vitae ultricies id, euismod in purus. Etiam lobortis quam nec interdum tempus. Etiam eu odio gravida, aliquam erat ac, finibus elit.
+					</div>
+					<div class="col-lg-3">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget posuere elit. Phasellus tempus ac leo id consectetur. Maecenas et tincidunt mauris. Curabitur tellus felis, aliquam vitae ultricies id, euismod in purus. Etiam lobortis quam nec interdum tempus. Etiam eu odio gravida, aliquam erat ac, finibus elit.
+					</div>
+					<div class="col-lg-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget posuere elit. Phasellus tempus ac leo id consectetur. Maecenas et tincidunt mauris. Curabitur tellus felis, aliquam vitae ultricies id, euismod in purus. Etiam lobortis quam nec interdum tempus. Etiam eu odio gravida, aliquam erat ac, finibus elit.</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget posuere elit. Phasellus tempus ac leo id consectetur. Maecenas et tincidunt mauris. Curabitur tellus felis, aliquam vitae ultricies id, euismod in purus. Etiam lobortis quam nec interdum tempus. Etiam eu odio gravida, aliquam erat ac, finibus elit.
+				<div class="row">
+					<div class="col-lg-6">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget posuere elit. Phasellus tempus ac leo id consectetur. Maecenas et tincidunt mauris. Curabitur tellus felis, aliquam vitae ultricies id, euismod in purus. Etiam lobortis quam nec interdum tempus. Etiam eu odio gravida, aliquam erat ac, finibus elit.
+					</div>
+					<div class="col-lg-6">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget posuere elit. Phasellus tempus ac leo id consectetur. Maecenas et tincidunt mauris. Curabitur tellus felis, aliquam vitae ultricies id, euismod in purus. Etiam lobortis quam nec interdum tempus. Etiam eu odio gravida, aliquam erat ac, finibus elit.
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<p>Look the difference both the divs have, first has some space to the left and right
+	and second occupies entire document's width</p>
+	<p><strong>And also Bootstrap columns can be nested you can observer that the second container has two rows. first row has three columns adding upto 12, second row has two columns, first column has again a row with four columns adding to 12 and second column has two rows first having one column and second having two columns adding to 12. So these can be nested as long as each row has columns adding upto 12</strong></p>
+			</div>
+		</div>
+	</div>
+
+	<!-- It's always a good practice to include scripts inside of the body
+	at the bottom, because these scripts will be loaded when the entire body is loaded, thereby reducing the 
+	load time of the web page. Always Bootstrap requires jquery to work. 
+	There are two ways to include bootstrap either the CDN link or by downloading it. Best way would be
+	downloading and including it because these cdns must be loaded from the internet and works fine 
+	when there's is good net connection, while the downloaded and included links work if there's a folder inside of the project directory without bothering about the connection. This depends on particular situations. -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script
+</body>
+</html>

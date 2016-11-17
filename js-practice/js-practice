@@ -1,0 +1,63 @@
+>typeof returns the type of the variable specified in it's parenthessess, typeof("X")--string
+
+THE TRICKY CASE IS
+
+typeof(null)--undefined
+typeof(typeof("mad"))--string
+SEE typeof always returns a string, and if typeof(<sometypeofhere>) will always be string.
+
+REFER 
+"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof" for more details on typeof
+
+typeof [a, b, c] is 'object'
+
+typeof /s/ --'function' in chrome 1-12
+typeof /s/ --'object' in firefox 5+
+
+and typeof alert -- 'object'
+
+DATATYPES
+>datatypes in Javascript are
+	--Boolean
+	--Undefined
+	--null
+	--number
+	--string
+	--symbol
+
+"http://perfectionkills.com/javascript-quiz/" do this quiz
+
+LOGICAL OPERATORS
+>AND -- exp1 && exp2 -- returns exp1 if it is false
+					 -- returns exp2 if exp1 is true
+
+>OR -- exp1 || exp2 -- returns exp1 if it is true, and
+                       doensn't evaluate exp2.
+                    -- returns exp2 if exp1 is false.
+                    
+REFER MDN "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators"
+
+TRUTHY VALUES -- "0"
+			  -- "false"
+			  -- empty function
+			  -- empty array
+			  -- empty object
+FALSY VALUES -- false
+			 -- zero, 0 
+			 -- " " empty string
+			 -- null
+			 -- undefined
+			 -- NaN
+
+NOTE: falsy values NULL and UNDEFINED are not equal to anything except themselves.
+
+REFER : "https://www.sitepoint.com/javascript-truthy-falsy/"
+
+DIFFERENCE BETWEEN "null" AND "undefined"
+>null === undefined //false
+>null == undefiend //true
+>null === null //true
+
+Note: for methods and functions typeof returns "FUNCTION"
+
+ 

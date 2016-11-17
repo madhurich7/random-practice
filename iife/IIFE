@@ -1,0 +1,8 @@
+IMMEDIATELY INVOKED FUNCTION EXPRESSION (IIFE)
+
+The code in the index, explains IIFE and also the closures
+concept
+
+WE use IIFEs to sustain the values that are executed withina a fucntion, i.e when ever a function is declared it is not invoked untill we call it. But if we want to make the function call, as soon as it is declared we use IIFE
+
+REFER "http://benalman.com/news/2010/11/immediately-invoked-function-expression/"

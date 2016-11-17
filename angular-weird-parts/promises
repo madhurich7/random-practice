@@ -1,0 +1,10 @@
+PROMISES
+
+REFER "https://www.youtube.com/watch?v=s6SH72uAn3Q"
+
+$q
+$q is a service in angular, that can be used to make asynchronous calls.
+That is we dont have to wait for the request to be processed, it will be processed some or the other time adn we can reuse it when ever it's done.
+see after making an asynchronous call the code that is written after this statement WILL BE EXECUTED even though it may or may not be completed.
+
+for promises refer "https://www.bennadel.com/blog/2632-creating-asynchronous-alerts-prompts-and-confirms-in-angularjs.htm"

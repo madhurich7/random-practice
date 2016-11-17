@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Practice</title>
+</head>
+<body>
+	<div ng-app="myApp">
+	<div ng-controller="myCtrl1">
+	<table ng-repeat="x in arr1">
+		<thead>
+			<tr>
+				<th>UserID</th>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Body</th>
+			</tr>
+		</thead>
+		<tr>
+			<td>{{x.userId}}</td>
+			<td>{{x.id}}</td>
+			<td>{{x.title}}</td>
+			<td>{{x.body}}</td>
+		</tr>
+	</table>
+		
+	</div>
+
+	<div ng-controller="myCtrl2">
+	<table ng-repeat="x in arr2 track by $index">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+			</tr>
+		</thead>
+		<tr>
+			<td>{{x.name}}</td>
+			<td>{{x.age}}</td>
+		</tr>
+	</table>
+		
+	</div>
+		
+	</div>
+
+
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	 <script>
+	 	var app = angular.module("myApp",[]);
+	 	app.controller('myCtrl1', ['$scope','$http', function($scope, $http){
+	 		$http({
+	 			method: "GET",
+	 			url: "https://jsonplaceholder.typicode.com/posts"
+	 		}).success(function(data){
+	 			console.log(data);
+	 			$scope.arr1 = data;
+	 		}).error(function(err){
+	 			return err;
+	 		});
+
+	 	}]);
+	 	app.controller('myCtrl2', ['$scope','$http', function($scope, $http){
+	 		$http({
+	 			method: "GET",
+	 			url: "http://rest.learncode.academy/api/johnbob/friends/"
+	 		}).success(function(data){
+	 			console.log(data);
+	 			$scope.arr2 = data;
+	 		}).error(function(err){
+	 			return err;
+	 		});
+
+	 	}]);
+	 </script>
+</body>
+</html>

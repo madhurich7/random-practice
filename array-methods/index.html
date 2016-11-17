@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Homework 12 Array methods</title>
+</head>
+<body>
+
+	<p id="pop1"></p>
+	<p id="push1"></p><br>
+
+	<p id="push2"></p>
+
+	<strong>Array before pop: </strong><p id="pop2"></p>
+	<strong>The length of original array reduces by number of pops</strong>
+	<script>
+	//pop gives the last element from the array, and the length decreases by number of pops
+		var people = ["mad", "man", "dad", "mom"];
+		var arr1 = [{
+			name: "mad",
+			age: 22,
+			fav: "food"
+		},{
+			func1: function(a){
+				return a*2;
+			}
+		}, ["dad", "mom"]];
+		document.getElementById('pop2').innerHTML = people;
+		var popped = people.pop();
+		document.getElementById('pop1').innerHTML = "element popped out using pop() is '" +
+		 popped + "'" + "and the length now is " + "<strong>" +people.length+"</strong>";
+		 console.log(people.length);
+
+		 //push increases the length of the array by the number of pushes
+		 //push adds the element at the end of the old array
+		 console.log(people.push("music"));
+		 document.getElementById('push1').innerHTML = "Length after push <strong>" +people.length+"</strong>";
+		 /*document.write("test");*/
+		 document.getElementById('push2').innerHTML = "<strong>Array after push</strong> " + people;
+
+		 var shifted = arr1.shift();
+		 console.log(shifted);
+		 var unshifted = arr1.unshift("[1,2,3]");
+		 console.log(unshifted + " is the length of arr1 after unshift");
+
+		 console.log("the array now is " + arr1);
+
+		/* delete arr1[1];
+
+		console.log("array after delete" +arr1);*/
+
+		/*console.log("what does this return ? "+arr1.splice(0,0,"{mad: funcMad(){return 6*4}}"));*/
+		console.log("arr1 after splice, this adds the function at the beginning" + arr1 );
+
+		console.log("indexof method" + arr1.indexOf({
+			func1: function(a){
+				return a*2;
+			}}));
+
+		//for each
+		people.forEach(function(value){
+			console.log(value + " test");
+		});
+
+		//testing foeEach along with index
+		function testingForEach(value, index){
+			console.log("testing forEach :at " + index + " in arr1 " + value);
+		}
+
+		arr1.forEach(testingForEach);
+
+		//map 
+		people.map(function(element){
+			console.log("append"+ element);
+		});
+
+		//returns the new array lengthOfPeople
+		var lengthOfPeople = people.map(function(element){
+			return element.length;
+		});
+
+		console.log("length of people " + lengthOfPeople);
+
+	</script>
+</body>
+</html>

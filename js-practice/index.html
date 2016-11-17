@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HW11 data types, truth and false values</title>
+</head>
+<body>
+
+
+	<script>
+		var m;
+		m = []; console.log("type of m " + typeof m);//object
+		m = {}; console.log("type of m " + typeof m);//object
+		m = "mad";
+		m = false;
+		m = 2;
+		//here after decalring all m's if you print the typeof onto the console then it will print the recent type of m which is "mad" i.e string.
+		console.log("type of m is " + typeof m);
+		console.log("type of a variable that is neither defined nor declared is " + typeof x);//gives undefined.
+
+		var k; console.log("type of variable that is not defined but decalred is " + typeof k);
+		console.log("type of a 'typeof' is " + typeof (typeof m));
+		console.log("checking in chrome is " + typeof /s/);
+
+		console.log("checking for truthy or falsy " +  "" === NaN)
+
+		//adding with strings
+		console.log(1 + "2" + "2");//122
+		console.log(1 + +"2" + "2");//32
+		console.log(1 + -"1" + "2");//02
+		console.log(+"1" + "1" + "2");//112
+		console.log("A" - "B" + "2");//NaN2
+		console.log("A" - "B" + 2);//NaN
+		console.log("1" + 2 + 2);//logs 122 because at the beginning it is string and therefore the remaining entire expression is evaluated as a string
+
+		console.log("mad" || {});//returns "mad" because in OR if first exp is true it DOES NOT evaluate the second exp.
+		console.log("mad" && {});//returns object because for and operation, if first exp is true it returns second exp.
+	</script>
+</body>
+</html>

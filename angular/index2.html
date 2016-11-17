@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Custom Directives</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app="myApp">
+	<!-- used as Element (E) -->
+	<movies-content></movies-content>
+
+	<!-- used as attribute (A) -->
+	<div schools-content></div>
+
+	<!-- used as class (C) -->
+	<div class="companies-content"></div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		//while declaring the directive it must be written in
+		//camelCase, while writing it in the body it must be "<movies-content></movies-content>"
+		app.directive('moviesContent', function(){
+			return{
+				restrict: 'E',
+				template: '<div class="container">\
+		<div class="movies">\
+			<h3>Movie Content</h3>\
+			<p>Lorem ipsum dolor sit amet, in justo volutpat sed viverra amet, in duis nunc, velit tempor malesuada et proin arcu, elementum diam erat quisque ac ullamcorper, egestas in elit ligula viverra congue.</p>\
+		</div>\
+	</div>'
+			};
+		});
+		app.directive('schoolsContent', function(){
+			return{
+				restrict: 'A',
+				template: '<div class="container">\
+		<div class="schools">\
+			<h3>Schools Content</h3>\
+			<p>Lorem ipsum dolor sit amet, in justo volutpat sed viverra amet, in duis nunc, velit tempor malesuada et proin arcu, elementum diam erat quisque ac ullamcorper, egestas in elit ligula viverra congue.</p>\
+		</div>\
+	</div>'
+			};
+		});
+		app.directive('companiesContent', function(){
+			return{
+				restrict: 'C',
+				template: '<div class="container">\
+		<div class="companies">\
+			<h3>Companies Content</h3>\
+			<p>Lorem ipsum dolor sit amet, in justo volutpat sed viverra amet, in duis nunc, velit tempor malesuada et proin arcu, elementum diam erat quisque ac ullamcorper, egestas in elit ligula viverra congue.</p>\
+		</div>\
+	</div>'
+			};
+		});
+
+	</script>
+</body>
+</html>

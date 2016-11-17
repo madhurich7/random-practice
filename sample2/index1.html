@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Internal style</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		.container{
+			border: 1px solid black;
+		}
+		.first-div{
+			color: blue;
+			font-family: sans-serif;
+			font-style: italic;
+			border: 1px solid red;
+			border-radius: 7px;
+			padding: 20px;
+			width: 50%;
+		}
+		#second-div{
+			font-weight: bold;
+			padding: 10px;
+			color: lightblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="first-div">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget posuere elit. Phasellus tempus ac leo id consectetur. Maecenas et tincidunt mauris. <strong>div 1</strong> </p>
+		</div>
+		<div id="second-div">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget posuere elit. Phasellus tempus ac leo id consectetur. Maecenas et tincidunt mauris. </p>
+		</div>
+	</div>
+	<div class="first-div">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget posuere elit. Phasellus tempus ac leo id consectetur. Maecenas et tincidunt mauris. <strong>div 2</strong></p>
+	</div>
+	<div>Both div1 and div2 have the same styling specified by only one class which is written only once
+	in the style tag, without having to re write for div2, this is what is advantageous for internal styling 
+	unlike the inline styling</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Loops in javascript</title>
+</head>
+<body>
+
+
+	<script>
+		var arr = [{
+			name: "vignan",
+			branch: "ECE",
+			place: "hyd"
+		},{
+			func1: function(a){return a*2;}
+		}, "mad"];
+
+		//for in loop, loops through the each element in the array.(i.e the indices of the array)
+		for(var x in arr){
+			console.log(arr[x]);
+		}
+
+		var obj1 = {
+				name: "mad",
+				age: 22,
+				func1: function(a){
+					return a + 7;
+				},
+				arr: [1,2,3]
+		};
+
+
+		//here for in loop, loops through the properties
+		for(var x in obj1){
+			console.log("these are the values in the object"+obj1.x); //see x is already a string so there's no need to specify x in codes again
+			console.log(typeof x);
+		}
+
+		var arr1 = [1,2, ["name", "mad"],{name:"madhuri"}];
+
+		//this is the normal for loop that loops through the indices, because we specify those indix values
+		for(var i = 0; i < arr1.length; i++){
+			console.log("using the normal for loop "+arr1[i]);
+		}
+
+		var m = 1;
+		while(m <= 5){
+			console.log("checking while loop");//this statement will be executed 5 times, in the console notice the number beside the statement.
+			m++;//if this condition is missed then condition becomes always true and the loop goes on executes, so to avoid this we need to write a code to make the condition false at any point of time.
+
+		}
+
+		
+		do{
+			console.log("testing do loop");
+			m++;
+		}while(m < 5);//see here m is already 5 and this condition is false (5 < 5) but still the statement logs out, because in do-while without even checking the condition it will be executed atleast once.
+
+
+		function fiveTimes(string){
+			return string;
+		}
+
+		var result = fiveTimes("fjdshf");
+		switch(result){
+			case "hello":
+			console.log("hello - greeting");
+			break;
+			case "hi":
+			console.log("hi - greeting");
+			break;
+			case "Morning":
+			console.log("Morning - greeting");
+			break;
+			case "Night":
+			console.log("Goodnight - greeting");
+			break;
+			default:
+			console.log("greeting not valid");
+
+		}
+	</script>
+</body>
+</html>

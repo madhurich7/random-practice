@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All about promises</title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myPromiseCtrl">
+		<h1>{{testValue}}</h1>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myPromiseCtrl', ['alertService', function(alertService){
+			
+			alertService.myAlert().then(function(){
+				console.log('alert executed from resolve block');
+			}, function(err){
+				console.log('alert executed from reject block');
+			});
+
+			$scope.testValue = "I am Practicing Promises here";
+			
+		}]);
+
+		app.service('alertService', ['$scope', '$q', function($scope, $q){
+			this.myAlert = function(){
+				var deferred = $q.defer();
+				
+				deferred.resolve(alert('alert resolved'));
+				deferred.reject(alert('alert rejected'));
+				
+				return deferred.promise;
+
+			};
+		}]);
+	</script>
+</body>
+</html>

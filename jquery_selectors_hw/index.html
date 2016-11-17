@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jquery practice</title>
+	<style>
+		div{
+			border: 1px solid blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="parent" class="para1">
+	div 1
+		<p>para 1 in div 1</p>
+		<p>para 2</p>
+		<div id="child1">
+		div 2
+		</div>
+		<p>para 3 in div 1</p>
+		<p>para 4 in div 1</p>
+		<p>para 5 in div 1</p>
+		<div id="child2" class="para-2">div 3
+			<p>p1 in div3</p>
+			<p>p2 in div3</p>
+			<p>p3 in div3</p>
+			<p>p4 in div3</p>
+		</div>
+		<div>div 4</div>
+	</div>
+	<div id="div2" class="para3">
+		<p>Heart beat is the <span>madhuri</span> movement caused due to contraction and expansion of the heart musceles while </p>
+		<p>Heart beat is the movement caused due to<span>madhuri</span>  and expansion of the heart musceles while pumping the blood</p>
+		<p>Heart beat is the movement caused due to contraction and expansion of the heart musceles while pumping the blood</p>
+		
+		<span></span>
+		<p></p>
+	</div>
+	<div class="mad-1">
+		Heart beat is the movement caused due to contraction and expansion of the heart musceles while pumping the blood
+	</div>
+	<div class="huri-1">
+		Heart beat is the movement caused due to contraction and expansion of the heart musceles while pumping the blood
+	</div>
+	<div class="xyzmadwhy">
+		Heart beat is the movement caused due to contraction and expansion of the heart musceles while pumping the blood
+	</div>
+	<div class="man xyz why">
+		Heart beat is the movement caused due to contraction and expansion of the heart musceles while pumping the blood
+	</div>
+	<div class="man">
+		Heart beat is the movement caused due to contraction and expansion of the heart musceles while pumping the blood
+	</div>
+	<div class="m1234 man">
+		Heart beat is the movement caused due to contraction and expansion of the heart musceles while pumping the blood
+	</div>
+	<div class="hurray">
+		Heart beat is the movement caused due to contraction and expansion of the heart musceles while pumping the blood
+	</div>
+
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+	/*hierarchy category*/
+	/*$('p + div').css('border', '1px solid red');*/
+	/*$('p ~ div').css('border', '1px solid red');*/
+	/*$('div#parent > p').css('border', '1px solid red');*/
+	/*$('div#parent p').css('border', '1px solid red');
+	$('#parent #child2 p').css('border', '3px solid deeppink');*/
+	$('div p:nth-child(even)').css('border', '3px solid red');
+	$('div#div2 p:contains("madhuri")').css('font-weight', 'bold');//see here this selects the entire para "p" if it finds the word "madhuri", if p is not mentioned and if only 'div#div2:contains("madhuri")' is specified then the entire div#div2 will be selected if it contains the specified word.
+	$('div#div2:has(span)').css('border', '3px soild grey');
+
+	$('div#div2 p:empty').text('innerp').css('color', 'yellow');
+	$('div#div2 p:parent').css('color', 'pink' );//selects the parent "p" elements inside od div#div2
+
+	$('div[class|="para"]').css({'background-color' : '#ff4d4d', 'font-size' : '25px'});
+	$('div[class*="mad"]').css({'font-weight':'bold', 'font-family':'cursive'});
+	$('div[class~="man"]').css({'font-size':'25px', 'font-family':'fantasy'});
+	$('div[class$="why"]').css('font-size', '30px');
+	$('div[class^="hu"]').css('background-color', '#ff80ff').click(function(){
+		$(this).animate({
+			opacity: '0.7'
+		});
+	});
+
+	$('div[class][id]').append('this has class attribute').css('background-color', ' #ff9900');
+	$('div[class!="mad"]').append("this don't have class called mad");
+
+	$('div:even').append(' even divs here').css('background-color', 'yellow');
+	$('div:odd').append(' <strong>odd divs here</strong>').css('background-color', '#c65353');
+
+
+
+
+</script>
+</body>
+</html>
