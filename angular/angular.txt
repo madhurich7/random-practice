@@ -7,3 +7,29 @@ Always use this order
 2.Modules
 3.Controllers
 4.Directives
+
+SCOPE AND ROOTSCOPE
+>A property declared using $rootScope unlike $scope can be accessed in the entire document i.e in the entire body even though it is declared in one particular controller.
+>if a property is declared using $scope in a particular controller, then we need to attach that controller to the element in the view to access that property's value declared in this controller and this property value CANT be accessed outside of this controller, BUT if it si declared using $rootScope it can be acessed in the entire document.--look into index3.html
+
+DATA BINDING
+REFER "http://www.angularjshub.com/examples/basics/twowaydatabinding/"
+>When ever we use ng-bind it just changes the property value in the view, but it does NOT change the value in the model, if it is changed in hte view.
+>If ng-model is used the property value WILL be changed both in the view as well as in the model, if we change the value in the view it reflectss the change in the model too.
+
+Note: "ng-bind" is same as "{{}}" the binding expression that we use to display values from controllers on to the view. --look into index4.html for databinding example
+
+
+NESTING CONTROLLERS IN VIEW
+controller nesting is possible in view
+>if in one ng-controller another ng-controller is defined then in the child ng-controller the updated value of var1 is seen which is different from var1 value in parent ng-controller--look into index5.html variable called "mom"
+
+$DIGEST AND $APPLY
+>if we use $scope.$apply() in a function, the updated values decalred in the function will be displayed in the entire document along with the properties decalred using "$rootScope".
+
+>if $scope.$digest() is used then it updates only the properties that are decalred using $scope in the entire document and the initial vlaue declared using $rootScope variable will remain same and doesn't reflect the change
+
+BUT BUT BUT this happens only when the property declared using $rootscope is outside of the controller in the view, if it is inside of the ng-controller div then using $digest also updates the property decalred using $rootScope along with the property decalred using $scope.--LOOK INTO index6.html
+
+REFER "https://www.youtube.com/watch?v=LgDgazlr_Kw" 
+
