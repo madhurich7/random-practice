@@ -24,6 +24,8 @@ NESTING CONTROLLERS IN VIEW
 controller nesting is possible in view
 >if in one ng-controller another ng-controller is defined then in the child ng-controller the updated value of var1 is seen which is different from var1 value in parent ng-controller--look into index5.html variable called "mom"
 
+>ONE MORE thing to note here is when a controller is inside another controller, if we change same input in the child controller it DOESN'T REFLECT THE CHANGE IN PARENT CONTROLLER THAT CHANGE WILL BE SELF TO THE CHILD BUT IF YOU CHANGE THE INPUT IN THE PARENT CONTROLLER IT REFLECTS IN THE CHILD CONTROLLER TOO. --look line 10 and 15 in index.html
+
 $DIGEST AND $APPLY
 >if we use $scope.$apply() in a function, the updated values decalred in the function will be displayed in the entire document along with the properties decalred using "$rootScope".
 

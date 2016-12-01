@@ -7,8 +7,12 @@
 		<div ng-controller="firstCtrl">
 			<p>About my dad {{dad}}</p>
 			<p>About my mom {{mom}}</p>
+			<input type="text" ng-model="name">
+			<p ng-bind="name"></p>
 			<div ng-controller="secondCtrl">
 				<p>Updated mom {{mom}}</p>
+				<input type="text" ng-model="name">
+				<p ng-bind="name"></p>
 			</div>
 		</div>
 		

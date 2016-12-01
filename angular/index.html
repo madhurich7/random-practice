@@ -11,7 +11,7 @@
 	<h2>Persons in PersonsCtrl</h2>
 		<div class="persons" ng-repeat="x in persons">
 		<!-- This div only displays variables that are decalred in personsCtrl -->
-			<h3><strong>Name: </strong>{{x.name}}</h3>
+			<h3><strong>Name: </strong>{{x.name | reverse}}</h3>
 			<h3><strong>Age: </strong>{{x.age}}</h3>
 			<h3><strong>weight: </strong>{{x.weight}}</h3>
 		</div>
@@ -19,10 +19,13 @@
 	<div class="container" ng-controller="countriesCtrl">
 	<h2>Countries in countriesCtrl</h2>
 		<div class="countries" ng-repeat="x in countries">
-			<h3><strong>Name: </strong>{{x.name}}</h3>
+			<h3><strong>Name: </strong>{{x.name | reverse}}</h3>
 			<h3><strong>Population: </strong>{{x.population}}</h3>
 			<h3><strong>Currency: </strong>{{x.currency}}</h3>
 		</div>
+	</div>
+	<div ng-controller="firstCtrl as fc">
+		<p><strong>{{fc.present}}</strong></p>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
@@ -34,6 +37,11 @@
 		//personsCtrl
 		//$scope is good practise to include because it gives the flexibility to 
 		//declare our own variable names inside of the controller's scope
+		app.filter('reverse', function(){
+			return function(text){
+				return text.split("").reverse().join("").toUpperCase();
+			}
+		});
 		app.controller('personsCtrl', ['$scope', function($scope){
 			$scope.persons = [{
 				name: "madhuri",
@@ -58,6 +66,9 @@
 			}];
 			
 		}]);
+		app.controller('firstCtrl', function(){
+			this.present = "I am praticing";
+		});
 	</script>
 </body>
 </html>
