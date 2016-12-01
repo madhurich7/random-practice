@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Nesting controllers in view</title>
+	</head>
+	<body ng-app="nestView">
+		<div ng-controller="firstCtrl">
+			<p>About my dad {{dad}}</p>
+			<p>About my mom {{mom}}</p>
+			<div ng-controller="secondCtrl">
+				<p>Updated mom {{mom}}</p>
+			</div>
+		</div>
+		
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script>
+			var app = angular.module('nestView', []);
+			app.controller('firstCtrl', ['$scope', function($scope){
+				$scope.dad = "I love my dad";
+				$scope.mom = "my mom is the best cook ever";
+
+			}]);
+			app.controller('secondCtrl', ['$scope', function($scope){
+				$scope.mom = "my mom is the best";				
+			}]);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>scope and rootscope</title>
+	</head>
+	<body ng-app="scopeExample">
+		<button ng-click="myFunc()">Aert me!</button>
+		<div ng-controller="firstCtrl">
+			<p>prop in firstCtrl <strong>{{prop1}}</strong></p>
+				
+		</div>
+		<div ng-controller="secondCtrl">
+			<button ng-click="myFunc()">Aert me!</button>
+		</div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script>
+			var app = angular.module('scopeExample', []);
+			app.controller('firstCtrl', ['$scope', '$rootScope', function($scope, $rootScope){
+				$scope.prop1 = "this is the property in firstCtrl";
+				$rootScope.myFunc = function(){
+					alert('I can be alerted in the entire document not only in this controller');
+				};
+			}]);
+			app.controller('secondCtrl', ['$scope', function($scope){
+				
+			}]);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body ng-app="applyAndDigest">
+		<p><strong>{{myDet}}</strong></p>
+		<div ng-controller="firstCtrl">
+			<p>Initial values <strong>{{myName}}, </strong><strong>{{myDet}}</strong></p>
+			
+		</div>
+		
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script>
+		/*"use strict";*/
+			var app = angular.module('applyAndDigest', []);
+			app.controller('firstCtrl', ['$scope', '$rootScope', function($scope, $rootScope){
+				$scope.myName = "mad";
+				$rootScope.myDet = "strong";
+
+				setTimeout(function(){
+					alert('executing timeout');
+					$scope.myName = "my name is changed to madhuri";
+					$rootScope.myDet = "perfectly strong";
+
+					$scope.$digest();
+				}, 500);
+			}]);
+		</script>
+	</body>
+</html>

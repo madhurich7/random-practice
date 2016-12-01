@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Data binding</title>
+	</head>
+	<body ng-app="bindingEx">
+	<div ng-controller="firstCtrl">
+		<p ng-bind="myName"></p><!--Here this is just the binding the value of myName, it just reflects the changes from model(controller) to the view here. value change in view doesn't reflect the value change in model-->
+		Value in view <input type="text" ng-model="mySis"><!--here this reflects the value in model and also if we change the value here in the html input element it reflects that change in the model too which can be seen in the below statement-->
+		Value in model <strong><span>{{mySis}}</span></strong>
+	</div>
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script>
+		var app = angular.module('bindingEx', []);
+		app.controller('firstCtrl', ['$scope', function($scope){
+			$scope.myName = "mad";
+			$scope.mySis = "manas";
+		}]);
+
+		
+	</script>
+	</body>
+</html>
