@@ -35,3 +35,8 @@ BUT BUT BUT this happens only when the property declared using $rootscope is out
 
 REFER "https://www.youtube.com/watch?v=LgDgazlr_Kw" 
 
+SCOPE SOUP
+when ever we declare a controller using $scope syntax then the varibales declared inside of it will be available in the controller. We can also use controller as syntax to decalre a controller without using $scope then if we use same variable names inside of THIS controller any changes to this varibale doesn't effect the same variable outside of it this is called SCOPE SOUP
+
+REFER karthik's class on 9/14/2016 
+
