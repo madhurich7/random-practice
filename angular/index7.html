@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>factory and service</title>
+</head>
+<body>
+	<div ng-app="myApp">
+		<div ng-controller="myCtrl1">
+			<p><strong>Result: </strong>{{contResult}}</p>
+		</div>
+	</div>
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl1', ['$scope', 'calculator', 'addString', function($scope, calculator, addString){
+
+		/*	calculator.calc = function(a, b, op){//see this here overwrites the function inside of the
+				//factory, if this is not wirtten then the function inside of the factory will be used.
+					switch(op){
+					case '%':
+						return a % (b+2);
+						
+					case '+':
+					 	return a + (b+2);
+						
+					case '-':
+						return a - (b+2);
+						
+					default:
+						return "not found";
+								
+					}
+			};*/
+
+			/*addString.giveString = function(str){//same thing happens with service, if we declare a 
+				//new function for the same function name in the controller then that overwrites
+				//the originally declared function inside of the service.
+				return str + " don't add string";
+			};*/
+			
+			$scope.contResult = calculator.calc(10,2,'+');
+			console.log(addString.giveString("mad"));
+			//console.log();
+			
+		}]);
+
+		app.service('addString', function(){
+			this.giveString = function(str){
+				return str + " added string";
+			};
+		});
+
+		app.factory('calculator', function(){//don't put $scope inside of parenthesis.
+			return {
+				calc: function(a, b, op){
+					switch(op){
+					case '%':
+						return a % b;
+						
+					case '+':
+					 	return a + b;
+						
+					case '-':
+						return a - b;
+						
+					default:
+						return "not found";
+								
+					}
+				}
+			};
+		});
+	</script>
+</body>
+</html>
