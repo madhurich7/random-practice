@@ -38,6 +38,14 @@ REFER "https://www.youtube.com/watch?v=LgDgazlr_Kw"
 SCOPE SOUP
 when ever we declare a controller using $scope syntax then the varibales declared inside of it will be available in the controller. We can also use controller as syntax to decalre a controller without using $scope then if we use same variable names inside of THIS controller any changes to this varibale doesn't effect the same variable outside of it this is called SCOPE SOUP
 
+If we declare a controller with "controller as" syntax, then if a model is changed
+out of the controller, the changes will not be reflected for the same model inside of the
+controller.
+
+BUT, if we decalre a controller with $scope, i.e without using controller as syntax, then
+any chnages that are made to the model out of the controller will ALSO effect the
+model with the same name inside of the controller.
+
 REFER karthik's class on 9/14/2016 
 
 CUSTOM DIRECTIVES
@@ -93,5 +101,79 @@ The restrict can be
 					m1: '&'
 				}		We can also refer to the functions decalred inside of a controller, and 
 				assigning these functions to the attributes of the custom directives in the view and refer
-				-ing them in the template of custom directive	 
+				-ing them in the template of custom directive	
+				
+FACTORY AND SERVICE
+
+app.service('serviceName', function(){
+	this.method1 = function(){
+
+	};
+
+	this.method2 = function(){
+
+	};
+});
+
+app.factory('factoryName', function(){
+	return function(){//do not write $scope inside of the parenthesis
+		method1: function(){
+
+		},
+		method2: function(){
+
+		}
+	}
+});
+
+THE MAIN DIFFERENCE BETWEEN "factory" and "service" is (what you observed)
+factory returns an object that has properties inside of it which may be functions
+or values or whatever, and these can be used as "factoryName.method1()" to use
+inside of the controller after injecting in the controller array dependencies.
+
+A service in turn has mutliple methods or values or what ever that are declared
+using the "this" keyword, all the methods or values to be used are attached to this
+"this" keyword, and this can be used as "serviceName.method1()" inside of the controller
+after injecting in the controller array dependencies.
+
+to look more REFER "http://stackoverflow.com/questions/23074875/angularjs-factory-and-service"
+
+	YOU GOT THIS ERROR REFERENCE "https://docs.angularjs.org/error/$injector/unpr?p0=$scopeProvider%20%3C-%20$scope%20%3C-%20calculator" when you wrote $scope inside of the
+	parenthesis of the factory function (look into line 111 in this file or the code line 55 in index7.html)
+
+POINTS TO REMEMBER
+>Factory and services are singletons, and if any modifications are
+made for these services or factories inside of the cotroller then the newly
+defined values or functions will overwrite the old one's and the changes are reflected 
+globally.	
+
+
+WAYS TO DEFINE A CONTROLLER
+
+method1 
+	--app.controller('ctrlName', ['$scope', function($scope){
+		$scope.var1 = "var1";//-->in minification this may be converted to
+		//some other name let say a.var1 or b.var1 the value of var1 doesn't change
+		//because the $scope in the array is being mapped to the argument passed
+		//inside of the function following the order here.
+}]);
+
+method2
+	--app.controller('ctrlName', function($scope){
+		$scope.var2 = "var2";//-->here when it tries to minify, since it doesn't see
+		//any mapping variables to map the argument "$scope" within the parenthesis
+		//it is forced to use $scope even after minification which leads to larger
+		//varibale size here. 
+	});
+
+See when angular code is compiled, it minifies the code, so when it is trying to
+minify the code, for instance if we have used method1, then when it tries
+to minify, the varibales that are declared using $scope	can be replaced with another
+shorter name.
+
+	SO IT'S ALWAYS BETTER TO USE "method1" type of declaring controllers
+	to have a minifed code.
+
+
+				
 
