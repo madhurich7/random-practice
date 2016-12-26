@@ -40,3 +40,58 @@ when ever we declare a controller using $scope syntax then the varibales declare
 
 REFER karthik's class on 9/14/2016 
 
+CUSTOM DIRECTIVES
+>We can defien our own custom directives uisng
+
+angular.module('myApp').directive('nameOfDirective', function(){
+	return {
+		restrict: 'E',
+		template: '<p>I am a custom directive with isolated scope.</p>',
+		scope:{
+
+		}
+	}
+});
+
+and mention that <name-of-directive></name-of-directive>
+in the view to render that element.
+
+The restrict can be 
+			'E', 'A', 'C'
+			if it's E then it cna be used only as element
+			if 'A', it cna be used as attribute
+			if 'C', it is used as class='name-of-directive'
+			inside of the element what ever you use in the view.
+
+	POINTS TO REMEMBER:
+		>When we render mutlpile directives on the view, with same input elements
+		having the same models, then if we change one of the input elements
+		all other inputs with the same model name, will be changed and all will have the 
+		same value that we entered in the first model.
+
+		>So inorder to avoid this repetetion, we can make each input element
+		individual to other, by definfing ISOLATED SCOPE, just by including a 
+		property called 'scope', with value {}, inside of the return statement.
+
+		>We can also read the values through the attributes of the directives mentioned
+		in the view, by specifying
+			scope: {
+				m1: '@'
+			}		-->if "@" is specified here for m1, if we have an attribute called "m1"
+						for our directive with some value like m1="hello", then we can print this value
+						in the template of our directive, by specifying {{m1}}, that just gives us 
+						what ever the value that is given to 'm1' attribute.
+			scope: {
+				m1: '='
+			}		--> if "=" is specified here for an attribute, then we can get the refernce value
+						of for example an <input ng-model="nameHere">
+						and in our custom directive m1="nameHere"--to refer to the value entered
+						inside of the input we can write {{m1}} in the template of our directive.
+						so that in that place, we can see the input value that is entered inside of our
+						input box.
+				scope: {
+					m1: '&'
+				}		We can also refer to the functions decalred inside of a controller, and 
+				assigning these functions to the attributes of the custom directives in the view and refer
+				-ing them in the template of custom directive	 
+
