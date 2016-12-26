@@ -16,9 +16,40 @@
 	<!-- used as class (C) -->
 	<div class="companies-content"></div>
 
+	<mad-content m1="my self"></mad-content>
+
+	<p><strong>{{myName}}--this should not work I guess</strong></p>
+	<p><strong>Testing "=" to grab input values in the directive</strong></p>
+
+	<input type="text" ng-model="meOne"><br>
+	<input type="text" ng-model="meTwo"><br>
+
+	<div ng-controller="madCtrl">
+	<p ng-bind="myName"><strong>--this should work I guess</strong></p>
+		<mad-content m1="my dad" m2="meOne" m3="work()"></mad-content>
+		<mad-content m1="my mommy" m2="meTwo" m3="pay()"></mad-content>
+		<mad-content m1="my sisssy" m3="hello()"></mad-content>
+		<mad-content m1="my self"></mad-content>
+	</div>
+
+	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	<script>
 		var app = angular.module('myApp', []);
+		app.controller('madCtrl', ['$scope', function($scope){
+			$scope.work = function(){
+				console.log('Work hard function');
+			};
+
+			$scope.pay = function(){
+				console.log('Worth the pay');
+			};
+
+			$scope.hello = function(){
+				console.log('hello everyone');
+			};
+		}]);
 		//while declaring the directive it must be written in
 		//camelCase, while writing it in the body it must be "<movies-content></movies-content>"
 		app.directive('moviesContent', function(){
@@ -52,6 +83,28 @@
 			<p>Lorem ipsum dolor sit amet, in justo volutpat sed viverra amet, in duis nunc, velit tempor malesuada et proin arcu, elementum diam erat quisque ac ullamcorper, egestas in elit ligula viverra congue.</p>\
 		</div>\
 	</div>'
+			};
+		});
+		app.directive('madContent', function(){
+			return{
+				restrict: 'E',
+				template: '<p>This is a para <input type="text" ng-model="myName">{{myName}}</p>\
+				<p><strong>{{m1}}</strong>--this is using "@" for the attribute</p>\
+				<p><strong>{{m2}}</strong>--this is using "=" for the attribute, to grab the input\
+				values</p>\
+				<button ng-Dblclick="m3()">double click</button>',
+				/*scope: {
+					m1: '@',
+					m2: '=',
+					m3: '&'
+				},*/
+				link: function(scope, element, attr){
+					element.bind('click', function(e){
+						console.log('you clicked' + e.target.innerHTML);
+						console.log("m1", attr.m1, "m2", attr.m2, "m3", attr.m3);
+						console.log("checking scope", scope.myName);
+					});
+				}
 			};
 		});
 
